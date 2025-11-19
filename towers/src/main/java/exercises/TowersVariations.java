@@ -46,7 +46,7 @@ import java.util.Scanner;
 public class TowersVariations {
 
     // static counter for number of moves
-    private static int count = 0;
+     static int count = 0;
 
     /**
      * Recursive method to solve the Towers of Hanoi variation.
@@ -58,13 +58,18 @@ public class TowersVariations {
      */
     public static void solveVariation(int n, int from, int mid, int to) {
         // TODO 1: Base case — if n == 0 → return.
-
         // TODO 2: Recursive case —
         //  a) Move n-1 disks from 'from' to 'mid' (using 'to' as helper)
         //  b) Move disk n from 'from' to 'to' — BUT must go through 'mid':
         //        System.out.printf("Move disk %d: %d → %d → %d%n", n, from, mid, to);
         //     or if counting only: count += 2; // because two moves required
         //  c) Move n-1 disks from 'mid' to 'to' (using 'from' as helper)
+        if (n == 0) return;
+        solveVariation(n - 1, from, to, mid);
+        count+= 2;
+        System.out.printf("Move disk %d: %d → %d → %d%n", n, from, mid, to);
+        solveVariation(n - 1, mid, from, to);
+
     }
 
     public static void main(String[] args) {
