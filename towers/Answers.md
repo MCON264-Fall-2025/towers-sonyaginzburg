@@ -13,12 +13,14 @@ Each part reinforces a key concept of recursion — base case, recursive case, a
 ### 1. Base Case
 _Describe the base condition that stops recursion (for example, what happens when `n == 0`?)._
 
-> ✎ Your answer here
+> ✎ Stops recursion so that it doesn't continue forever by returning without making moves.
 
 ### 2. Recursive Case
 _Explain the sequence of recursive calls and what each represents._
 
-> ✎ Your answer here
+> ✎ // solve(n - 1, from, to, aux, moves); This moves the top disks from 1 > 2 using 3
+>  moves.add(from + " -> " + to); this moves the biggest disk from the source (1) to the destination (2)
+   solve(n - 1, aux, from, to, moves); This moves the disks from the middle tp the destination 
 
 ### 3. Sample Trace (for n = 3)
 
@@ -38,23 +40,23 @@ _Total moves = 2ⁿ − 1 = 7 (for n = 3)_
 ### 1. Approach
 _How did you modify the standard recursion to count rather than print moves?_
 
->  Your answer here
+>  By incrementing the count for a disk that was moved so that the logic is the same but the part that gets tracked is the number of moves.
 
 ### 2. Verification of Formula
 _Complete the table and verify that count = 2ⁿ − 1._
 
 | n | Expected (2ⁿ − 1) | Program Output | Matches? (Y/N) |
-|:--:|:--:|:--:|:--:|
-| 1 | 1 |  |  |
-| 2 | 3 |  |  |
-| 3 | 7 |  |  |
-| 4 | 15 |  |  |
-| 5 | 31 |  |  |
+|:--:|:--:|:--------------:|:--------------:|
+| 1 | 1 |       1        |       Y        |
+| 2 | 3 |       3        |       Y        |
+| 3 | 7 |       7        |       Y        |
+| 4 | 15 |       15       |       Y        |
+| 5 | 31 |       31       |       Y        |
 
 ### 3. Reflection
 _What changes when you replace printed moves with a counter? What are the pros and cons?_
 
-> ✎ Your answer here
+> ✎ Instead of printing the moves, the number of moves is printed. Pros is its easy to verify the recursion works correctly, and con is that you don't see the exact sequence of moves.
 
 ---
 
@@ -63,8 +65,8 @@ _What changes when you replace printed moves with a counter? What are the pros a
 ### 1. New Rule
 _Every move must pass through the middle peg. How does this alter the recursion?_
 
-> ✎ Your answer here
-
+> ✎ You can never go from 1 > 3 or 3 > 1, you always have to go through the middle peg so those moves become two moves, 1>2>3 or 3>2>1
+Now recursion grows faster bc its 3^n -1 instead of the classic 2^n-1 
 ### 2. Observed Move Counts
 
 | n | Expected ≈ 3ⁿ − 1 | Program Output | Matches? (Y/N) |
@@ -77,7 +79,8 @@ _Every move must pass through the middle peg. How does this alter the recursion?
 ### 3. Analysis
 _Why does this variation grow faster than the standard version? How do additional move constraints affect complexity?_
 
-> ✎ Your answer here
+> ✎  Same answer as above. You can never go from 1 > 3 or 3 > 1, you always have to go through the middle peg so those moves become two moves, 1>2>3 or 3>2>1
+Now recursion grows faster bc its 3^n -1 instead of the classic 2^n-1
 
 ---
 
